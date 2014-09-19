@@ -1,0 +1,192 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+
+</title>
+    <style type="text/css">
+
+        .width100 {
+            width: 100%;
+        }
+
+        .width25 {
+            width: 25%;
+        }
+
+        .width30 {
+            width: 30%;
+        }
+
+        .width50 {
+            width: 50%;
+            text-align: center;
+        }
+
+        TextBox {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <form method="post" action="WebForm1.aspx" id="frmServiceOrder">
+    <div>
+        <table class="width100">
+            <tr>
+                <td class="width25">&nbsp;</td>
+                <td class="width25">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="auto-style3">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="width25">
+                    <span id="lblTitulo">Orden de Servicio</span>
+                </td>
+                <td class="width25"></td>
+                <td></td>
+                <td class="auto-style3"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25">&nbsp;</td>
+                <td class="width25">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="auto-style3">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                    <span id="lblOrderCode">Codigo Orden</span>
+                </td>
+                <td></td>
+                <td class="width25">
+                    <input name="txtOrderCode" type="text" id="txtOrderCode" Class="width100" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                    <span id="lblOwner">Propietario</span>
+                </td>
+                <td></td>
+                <td class="width25">
+                    <input name="txtOwner" type="text" id="txtOwner" Class="width100" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                    <span id="lblPlate">Placa</span>
+                </td>
+                <td></td>
+                <td class="width25">
+                    <input name="txtPlate" type="text" id="txtPlate" Class="width100" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                    <span id="lblType">Tipo</span>
+                </td>
+                <td></td>
+                <td class="width25">
+                    <select name="ddlType" id="ddlType" Class="width100">
+					</select>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                    <span id="lblBrand">Marca</span>
+                </td>
+                <td></td>
+                <td class="width25">
+                    <input name="txtBrand" type="text" id="txtBrand" Class="width100" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                    <span id="lblModel">Modelo</span>
+                </td>
+                <td></td>
+                <td class="width25">
+                    <input name="txtModel" type="text" id="txtModel" Class="width100" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25"></td>
+                <td></td>
+                <td class="width25"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25" colspan="3">
+                    <fieldset>
+                        <legend>Servicios</legend>
+                        <table id="ServicesTable" class="width100">
+							<tr class="width30">
+								<td></td>
+								<td>
+									<input id="cbGeneralWash" type="checkbox" name="cbGeneralWash" /><label for="cbGeneralWash">Lavado General</label>
+								</td>
+								<td></td>
+							</tr>
+							<tr class="width30">
+								<td></td>
+								<td>
+									<input id="cbMotorWash" type="checkbox" name="cbMotorWash" /><label for="cbMotorWash">Lavado Motor</label>
+								</td>
+								<td></td>
+							</tr>
+							<tr class="width30">
+								<td></td>
+								<td>
+									<input id="cbPolish" type="checkbox" name="cbPolish" /><label for="cbPolish">Polichado</label>
+									</td>
+								<td></td>
+							</tr>
+						</table>
+                    </fieldset> 
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25"></td>
+                <td></td>
+                <td class="width25"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width50" colspan="3" >
+                    <input type="submit" name="saveOrder" value="Almacenar" id="saveOrder" class="width50" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="width25"></td>
+                <td class="width25">
+                </td>
+                <td></td>
+                <td class="width25"></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
