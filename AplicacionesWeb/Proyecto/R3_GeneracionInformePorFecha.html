@@ -1,0 +1,220 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <style>
+        .width25 {
+            width: 25%;
+        }
+
+        .width50 {
+            width: 50%;
+            text-align: center;
+        }
+        .CenterInfo {
+            text-align: center;
+        }
+        .txt100 {
+            width: 90%;
+        }
+		/*
+		body{
+			font-size:8pt;
+			font-family: Verdana;
+			padding: 5px;
+		}
+		*/
+    </style>
+	
+	
+    <script type="text/javascript" src="Scripts/jquery-1.11.1.js"></script>
+	
+	
+	<script type="text/javascript" src="Scripts/jquery-ui.js"></script>
+	<script type="text/javascript" src="Scripts/jquery.ui.datepicker-es.js"></script>
+	
+    <!-- <script type="text/javascript" src="Scripts/jquery.jqGrid.src.js"></script> -->
+    <script type="text/javascript" src="Scripts/jquery.jqGrid.min.js"></script>
+    <script type="text/javascript" src="Scripts/grid.locale-es.js"></script>
+    <script type="text/javascript">
+
+        var data = [
+                { Orden: "1", Propietario: "Pedro Perez", Placa: "ABC123", Modelo: "2014", Marca: "chevrolet", Operario: "Camilo Perez" },
+                { Orden: "2", Propietario: "Mario Gomez", Placa: "DEF456", Modelo: "2010", Marca: "hyundai", Operario: "Camilo Perez" },
+                { Orden: "3", Propietario: "Fernanda Martinez", Placa: "GHI789", Modelo: "2014", Marca: "renault", Operario: "Juan Pelaez" }
+        ];
+
+		var hasClicked = false;
+		
+        $(document).ready(function () {
+
+            $("#grdInformePorFecha").jqGrid({
+                datatype: "local",
+                height: "auto",
+                colNames: ['Orden', 'Propiertario', 'Placa', 'Modelo', 'Marca', 'Operario'],
+                colModel: [
+                    { name: 'Orden', sortable: false, resizable: true, align: 'center', hidden: false },
+                    { name: 'Propietario', sortable: false, resizable: true, align: 'left', hidden: false },
+                    { name: 'Placa', sortable: false, resizable: true, align: 'center', hidden: false },
+                    { name: 'Modelo', sortable: false, resizable: true, align: 'center', hidden: false },
+                    { name: 'Marca', sortable: false, resizable: true, align: 'left', hidden: false },
+                    { name: 'Operario', sortable: false, resizable: true, align: 'left', hidden: false }
+                ],
+                multiselect: false,
+                caption: ""
+            });
+
+            LoadGrid();
+			
+			$("#display").hide();
+        });
+
+        function LoadGrid() {
+            $("#grdInformePorFecha").jqGrid("clearGridData");
+            for (var i = 0; i <= data.length; i++)
+                jQuery("#grdInformePorFecha").jqGrid('addRowData', i + 1, data[i]);
+        }
+		
+		function showReport(){
+			var msg = validateFields();
+			if(msg == "")
+				$("#display").show();
+			else
+				alert(msg);
+		}
+		
+		function validateFields(){
+		
+			var message = "";
+			
+			if($("#txtFechaDesde").val() == ""){ 
+				message = "Es obligatorio ingresar la informacion de la fecha desde"; 
+				return message;
+			}
+			
+			if($("#txtFechaHasta").val() == ""){ 
+				message = "Es obligatorio ingresar la informacion de la fecha hasta"; 
+				return message;
+			}
+			
+			return message;
+		}
+		
+		$(function () {
+			$.datepicker.setDefaults($.datepicker.regional["es"]);
+			$("#txtFechaDesde").datepicker({
+				firstDay: 1,
+				gotoCurrent: true,
+				onSelect: function(selected) {
+				  $("#txtFechaHasta").datepicker("option","minDate", selected)
+				}
+			});
+		});
+		
+		$(function () {
+			$.datepicker.setDefaults($.datepicker.regional["es"]);
+			$("#txtFechaHasta").datepicker({
+				firstDay: 1,
+				gotoCurrent: true,
+				onSelect: function(selected) {
+					$("#txtFechaDesde").datepicker("option","maxDate", selected)
+				}
+			});
+		});
+		
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table style="width: 100%">
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width10"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20" colspan="5" style="text-align: center;">
+                        <span ID="lblTitulo">Informacion Ordenes Por Fecha</span>
+                    </td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width10"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20">
+                        <span ID="lblFechaDesde">Desde</span>
+                    </td>
+                    <td class="width20">
+						<input name="txtFechaDesde" type="text" id="txtFechaDesde"/>
+                    </td>
+                    <td class="width10"></td>
+                    <td class="width20">
+                        <span ID="lblFechaHasta">Hasta</span>
+                    </td>
+                    <td class="width20">
+						<input name="txtFechaHasta" type="text" id="txtFechaHasta"/>
+                    </td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width10"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20" colspan="5" style="text-align: center;">
+						<input type="button" name="txtGenerateData" value="Generar Informe" id="txtGenerateData" onClick="showReport();"/>
+                    </td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width10"></td>
+                    <td class="width20"></td>
+                    <td class="width20"></td>
+                    <td class="width5"></td>
+                </tr>
+                <tr>
+                    <td class="width5"></td>
+                    <td class="width20" colspan="5" id="display" style="text-align: center;">
+						<table>
+							<tr>
+								<td>
+									<table id="grdInformePorFecha">
+									</table>
+									<div id="grdInformePorFecha_Pager" />
+								</td>
+							</tr>
+						</table>
+					</td>
+                    <td class="width5"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

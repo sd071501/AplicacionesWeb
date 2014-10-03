@@ -29,6 +29,78 @@
             width: 100%;
         }
     </style>
+	<script type="text/javascript" src="Scripts/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+	
+		function SaveOrder(){
+			var msg = ValidateFields();
+			if(msg == ""){
+				debugger;
+				CleanFields();
+				alert("Orden Almacenada");
+			}
+			
+			else{
+				alert(msg);
+			}
+		}
+		
+		function CleanFields(){
+			$("#txtOrderCode").val("");
+			$("#txtOwner").val("");
+			$("#txtPlate").val("");
+			ddlType.value = 0;
+			$("#txtBrand").val("");
+			$("#txtModel").val("");
+			$("#cbGeneralWash").prop("checked", false);
+			$("#cbMotorWash").prop("checked", false);
+			$("#cbPolish").prop("checked", false);
+		}
+		
+		function ValidateFields(){debugger;
+		
+			var message = "";
+			
+			if($("#txtOrderCode").val() == ""){ 
+				message = "El codigo de orden es obligatorio"; 
+				return message;
+			}
+			
+			if($("#txtOwner").val() == ""){ 
+				message = "El nombre del propietario es obligatorio"; 
+				return message;
+			}
+			
+			if($("#txtPlate").val() == ""){ 
+				message = "La placa del vehiculo es obligatoria"; 
+				return message;
+			}
+			
+			if(ddlType.value == 0){ 
+				message = "El tipo de vehiculo es obligatorio"; 
+				return message;
+			}
+			
+			if($("#txtBrand").val() == ""){ 
+				message = "La marca del vehiculo es obligatoria"; 
+				return message;
+			}
+			
+			if($("#txtModel").val() == ""){ 
+				message = "El modelo del vehiculo es obligatorio"; 
+				return message;
+			}
+			
+			if( $( "input:checked" ).length == 0){
+				message = "Debe seleccionar al menos un servicio"; 
+				return message;
+			}
+			
+			return message;
+		}
+	
+	</script>
+	
 </head>
 <body>
     <form method="post" action="WebForm1.aspx" id="frmServiceOrder">
@@ -98,6 +170,10 @@
                 <td></td>
                 <td class="width25">
                     <select name="ddlType" id="ddlType" Class="width100">
+						<option value="0">-- Seleccione --</option>
+						<option value="1">Automovil</option>
+						<option value="2">Camioneta</option>
+						<option value="3">Camion</option>
 					</select>
                 </td>
                 <td></td>
@@ -173,7 +249,7 @@
             <tr>
                 <td class="width25"></td>
                 <td class="width50" colspan="3" >
-                    <input type="submit" name="saveOrder" value="Almacenar" id="saveOrder" class="width50" />
+                    <input type="button" name="saveOrder" value="Almacenar" id="saveOrder" class="width50" onClick="SaveOrder();" />
                 </td>
                 <td></td>
             </tr>

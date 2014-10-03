@@ -1,0 +1,92 @@
+#lblTitulo{
+	top: 15px;
+	width: 25%;
+	height: 50px;
+	font-family: cursive;
+	color: blue;
+}
+
+
+#txtTipo{
+	position: absolute;
+	top: 55px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+	
+}
+
+#txtDescripcion{
+	position: absolute;
+	top: 90px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+#txtValor{
+	position: absolute;
+	top: 125px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+#frmAdmUsers{
+	background-color: lightgrey;
+}
+
+#txtCedula{
+	position: absolute;
+	top: 55px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+#txtNombre{
+	position: absolute;
+	top: 90px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+#txtApellido{
+	position: absolute;
+	top: 125px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+#txtRol{
+	position: absolute;
+	top: 160px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+#frmConsOperario{
+	background-color: lightgrey;
+
+}
+
+#txtOperario{
+	position: absolute;
+	top: 55px;
+	left: 150px;
+	text-align: center;
+	width: 15%;
+}
+
+.fechafin{
+	position: absolute;
+	top: 90px;
+	left: 350px;
+	text-align: center;
+	
+}
+
+

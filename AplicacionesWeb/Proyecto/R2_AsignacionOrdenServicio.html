@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <style>
+        .width25 {
+            width: 25%;
+        }
+
+        .width50 {
+            width: 50%;
+            text-align: center;
+        }
+    </style>
+    <script type="text/javascript" src="Scripts/jquery-1.11.1.js"></script>
+    <!-- <script type="text/javascript" src="Scripts/jquery.jqGrid.src.js"></script> -->
+    <script type="text/javascript" src="Scripts/jquery.jqGrid.min.js"></script>
+    <script type="text/javascript" src="Scripts/grid.locale-es.js"></script>
+    <script type="text/javascript">
+
+        var data = [
+                { Orden: "1", Propietario: "Pedro Perez", Placa: "ABC123", Modelo: "2014", Marca: "chevrolet", Asignar: "<img id='_img' name='_img' src='Content/arrow_left1.png' heihgt=12px width=12px onclick='DeleteFromList(1);' />" },
+                { Orden: "2", Propietario: "Mario Gomez", Placa: "DEF456", Modelo: "2010", Marca: "hyundai", Asignar: "<img id='_img' name='_img' src='Content/arrow_left1.png' heihgt=12px width=12px onclick='DeleteFromList(2);' />" },
+                { Orden: "3", Propietario: "Fernanda Martinez", Placa: "GHI789", Modelo: "2014", Marca: "renault", Asignar: "<img id='_img' name='_img' src='Content/arrow_left1.png' heihgt=12px width=12px onclick='DeleteFromList(3);' />" }
+        ];
+
+        $(document).ready(function () {
+            $("#grdPendingOrders").jqGrid({
+                datatype: "local",
+                height: "auto",
+                //autowidth: true,
+                //forceFit: true,
+                //rowList: [5, 10, 15],
+                //pager: '#grdPendingOrders_Pager',
+                colNames: ['Orden', 'Propiertario', 'Placa', 'Modelo', 'Marca', 'Asignar'],
+                colModel: [
+                    { name: 'Orden', sortable: false, resizable: true, align: 'center', hidden: false },
+                    { name: 'Propietario', sortable: false, resizable: true, align: 'left', hidden: false },
+                    { name: 'Placa', sortable: false, resizable: true, align: 'center', hidden: false },
+                    { name: 'Modelo', sortable: false, resizable: true, align: 'center', hidden: false },
+                    { name: 'Marca', sortable: false, resizable: true, align: 'left', hidden: false },
+                    { name: 'Asignar', sortable: false, resizable: true, align: 'center', hidden: false }
+                ],
+                //caption: " ",
+                //loadonce: true,
+                //sortable: true,
+                multiselect: false,
+                caption: ""
+            });/*.navGrid('#grdPendingOrders_Pager',
+            { add: false, edit: false, del: false, search: true, refresh: false, view: true },
+            { multipleSearch: true },
+            { closeOnEscape: true }
+            );
+        });*/
+
+            LoadGrid();
+
+        });
+
+        function DeleteFromList(orden) {
+            for (var i = 0; i <= data.length; i++) {
+                if (data[i].Orden == orden) {
+                    data.splice(i, 1);
+                    break;
+                }
+            }
+
+            LoadGrid();
+        }
+
+        function LoadGrid() {
+            $("#grdPendingOrders").jqGrid("clearGridData");
+            for (var i = 0; i <= data.length; i++)
+                jQuery("#grdPendingOrders").jqGrid('addRowData', i + 1, data[i]);
+        }
+
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table style="width: 100%">
+                <tr>
+                    <td class="width25"></td>
+                    <td class="width50"></td>
+                    <td class="width25"></td>
+                </tr>
+                <tr>
+                    <td class="width25"></td>
+                    <td class="width50">
+						<span id="lblTitulo">Ordenes Pendientes Por Asignacion Para Hoy</span>
+                    </td>
+                    <td class="width25"></td>
+                </tr>
+                <tr>
+                    <td class="width25"></td>
+                    <td class="width50"></td>
+                    <td class="width25"></td>
+                </tr>
+                <tr>
+                    <td class="width25"></td>
+                    <td class="width50">
+                        <table>
+                            <tr>
+                                <td>
+                                    <table id="grdPendingOrders">
+                                    </table>
+                                    <div id="grdPendingOrders_Pager" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class="width25"></td>
+                </tr>
+                <tr>
+                    <td class="width25"></td>
+                    <td class="width50"></td>
+                    <td class="width25"></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
